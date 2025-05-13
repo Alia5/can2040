@@ -1,6 +1,6 @@
 // Software CANbus implementation for rp2040
 //
-// Copyright (C) 2022-2024  Kevin O'Connor <kevin@koconnor.net>
+// Copyright (C) 2022-2025  Kevin O'Connor <kevin@koconnor.net>
 //
 // This file may be distributed under the terms of the GNU GPLv3 license.
 
@@ -37,6 +37,7 @@
 #define unlikely(x)     __builtin_expect(!!(x), 0)
 #define ARRAY_SIZE(a) (sizeof(a) / sizeof(a[0]))
 #define DIV_ROUND_UP(n,d) (((n) + (d) - 1) / (d))
+#define __DMB() __asm__ __volatile__("dmb 0xF": : :"memory")
 
 // Helper functions for writing to "io" memory
 static inline void writel(void *addr, uint32_t val) {
